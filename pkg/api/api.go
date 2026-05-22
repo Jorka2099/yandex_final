@@ -12,9 +12,10 @@ func writeJSON(w http.ResponseWriter, data any, statusCode int) {
 }
 
 func Init() {
-	http.HandleFunc("/api/nextdate", NextDateHandler)
-	http.HandleFunc("/api/task", taskHandler)
-	http.HandleFunc("/api/tasks", tasksHandler)
-	http.HandleFunc("/api/task/done", doneTaskHandler)
+	http.HandleFunc("/api/nextdate", Auth(NextDateHandler))
+	http.HandleFunc("/api/task", Auth(taskHandler))
+	http.HandleFunc("/api/tasks", Auth(tasksHandler))
+	http.HandleFunc("/api/task/done", Auth(doneTaskHandler))
+	http.HandleFunc("/api/signin", signinHandler)
 
 }

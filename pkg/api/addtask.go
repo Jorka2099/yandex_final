@@ -23,7 +23,7 @@ func checkDate(task *db.Task) error {
 
 	_, err = time.Parse(DateFormat, task.Date)
 	if err != nil {
-		return fmt.Errorf("Wrong date format %v", err)
+		return fmt.Errorf("wrong date format %w", err)
 	}
 
 	isPast := task.Date < today

@@ -76,7 +76,7 @@ func addTaskHandler(w http.ResponseWriter, r *http.Request) {
 
 	newTaskID, err := db.AddTask(&task)
 	if err != nil {
-		writeJSON(w, map[string]string{"error": "Failed to add task"}, http.StatusBadRequest)
+		writeJSON(w, map[string]string{"error": "Failed to add task"}, http.StatusInternalServerError)
 		return
 	}
 
